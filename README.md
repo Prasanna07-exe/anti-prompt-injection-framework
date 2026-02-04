@@ -53,21 +53,21 @@ Every user prompt is routed through a **central security gateway** before reachi
 ## 5. System Architecture
 The gateway utilizes a layered defense-in-depth approach:
 
-[ User Input (Chatbot / API) ]
-              ↓
-[ Sensitive Data Guard (PII & Secrets) ]
-              ↓
-[ Rule Engine (Regex / Keywords) ]
-              ↓
-[ Semantic Risk Analysis ]
-              ↓
-[ Policy Decision Engine ]
-        ↓                ↓
-   [ Allow ]        [ Block / Refuse / Sanitize ]
-        ↓                ↓
-[ LLM Execution ]   [ Metrics Logged ]
-        ↓
-[ Response Filtering + Metrics ]
+```mermaid
+graph TD
+    A[User Input: Chatbot / API] --> B[Sensitive Data Guard: PII & Secrets]
+    B --> C[Rule Engine: RegEx / Keywords]
+    C --> D[Semantic Risk Analysis]
+    D --> E{Policy Decision Engine}
+    
+    E -->|High Risk| F[Block / Refuse / Sanitize]
+    E -->|Safe| G[Allow]
+    
+    G --> H[LLM Execution]
+    F --> I[Metrics Logged]
+    H --> J[Response Filtering + Metrics]
+    I --> J
+```
 
 
 **Key Design Principles:**
@@ -149,6 +149,7 @@ This project demonstrates that prompt injection is a governance challenge. By mo
 
 
 ---
+
 
 
 

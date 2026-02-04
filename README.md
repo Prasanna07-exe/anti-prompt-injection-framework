@@ -99,10 +99,11 @@ streamlit run dashboard/app.py
 4. Start Chatbot (Streamlit)
 Bash
 streamlit run chatbot/app.py
-Service	URL
-API Documentation	http://127.0.0.1:8000/docs
-Security Dashboard	http://localhost:8501
-Secure Chatbot	http://localhost:8502
+
+### Service	URL:
+* API Documentation	- http://127.0.0.1:8000/docs
+* Security Dashboard - http://localhost:8501
+* Secure Chatbot - http://localhost:8502
 
 ---
 
@@ -139,6 +140,7 @@ This project demonstrates that prompt injection is a governance challenge. By mo
 
 
 ---
+
 
 
 

@@ -29,12 +29,22 @@ SENSITIVE_REQUESTS = [
     "authentication token",
     "private key",
     "credentials",
-    "password"
+    "password",
 
-    "how the system decides what to block",
-    "how blocking works",
-    "decision logic of the system",
-    "internal decision process"
+    # 🔥 --- Employee / PII data (NEW – IMPORTANT) ---
+    "employee personal details",
+    "employee personal data",
+    "employee details",
+    "employee information",
+    "employee phone",
+    "employee phone number",
+    "employee address",
+    "employee email",
+    "employee salary",
+    "employee records",
+    "staff personal details",
+    "staff personal data",
+    "personal details of employees"
 
 ]
 
@@ -54,6 +64,9 @@ def check_sensitive_request(prompt: str) -> bool:
     Detects genuine requests for sensitive internal,
     business, development, or credential information.
     """
+    if not prompt:
+        return False
+    
     prompt_lower = prompt.lower()
 
     # Ignore explicit negation
@@ -61,3 +74,4 @@ def check_sensitive_request(prompt: str) -> bool:
         return False
 
     return any(term in prompt_lower for term in SENSITIVE_REQUESTS)
+
